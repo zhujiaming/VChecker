@@ -1,16 +1,13 @@
-[
-  {
-    "vernum": 1,
-    "vercode": "1.0.0",
-    "force": false,
-    "date": "202306122100",
-    "forElse": "",
-  },
-  {
-    "vernum": 0,
-    "vercode": "0.0.0",
-    "force": false,
-    "date": "202306122100",
-    "forElse": "",
-  }
-]
+[{
+	"vernum": 1,
+	"vercode": "1.0.0",
+	"force": false,
+	"date": "202306122100",
+	"forElse": ""
+}, {
+	"vernum": 0,
+	"vercode": "0.0.0",
+	"force": false,
+	"date": "202306122100",
+	"forElse": ""
+}]
