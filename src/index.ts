@@ -1,4 +1,6 @@
-import { GithubFileSource } from "./source";
+import GithubFileSource from "./source";
+import { VChecker } from "./ver";
+
 function runExample() {
   new VChecker()
     .local({
@@ -8,13 +10,17 @@ function runExample() {
       dateTime: 0,
       forElse: "",
     })
-    .remote(new GithubFileSource(""))
+    .remote(
+      new GithubFileSource(
+        "https://raw.githubusercontent.com/zhujiaming/VChecker/main/.ver"
+      )
+    )
     .tryCheck()
     .then((res) => {
       if (res) {
         // 有版本更新
         console.log("need update:", res);
-      }else{
+      } else {
         console.log("no update:", res);
       }
     })
@@ -23,4 +29,4 @@ function runExample() {
     });
 }
 
-runExample()
+runExample();

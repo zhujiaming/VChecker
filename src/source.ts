@@ -1,6 +1,7 @@
 import https from "https";
+import { IVersonSource, VerInfo } from "./ver";
 
-export class GithubFileSource implements IVersonSource {
+export default class GithubFileSource implements IVersonSource {
   _fileUrl: string = "";
 
   constructor(publicFileUrl: string) {
@@ -19,8 +20,9 @@ export class GithubFileSource implements IVersonSource {
             return this.readVersionFromFile(res.headers.location!);
           }
           res.on("data", (d) => {
-            console.log(d);
-            resolve(JSON.parse(d)[0]);
+            var jsonString = Buffer.from(d).toString("utf-8");
+            console.log("git file content:", jsonString);
+            resolve(JSON.parse(jsonString)[0]);
           });
         })
         .on("error", (e) => {

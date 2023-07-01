@@ -8,6 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.VChecker = void 0;
 var zero = {
     vernum: 0,
     vercode: "0.0.0",
@@ -21,7 +23,7 @@ var CompareByVerNumber = (oldVersionInfo, newVersionInfo) => __awaiter(void 0, v
     }
     return null;
 });
-class QVersion {
+class VChecker {
     constructor() {
         this._verInfo = zero;
     }
@@ -55,7 +57,7 @@ class QVersion {
         return __awaiter(this, void 0, void 0, function* () {
             if (localStorage) {
                 var dumpData = JSON.stringify(this._verInfo);
-                localStorage.setItem(QVersion.KEY, dumpData);
+                localStorage.setItem(VChecker.KEY, dumpData);
             }
             else if (this._dumpFunc) {
                 yield this._dumpFunc(this._verInfo);
@@ -72,7 +74,7 @@ class QVersion {
                 verInfo = yield this._pullFunc();
             }
             else if (localStorage) {
-                var verInfoStr = localStorage.getItem(QVersion.KEY);
+                var verInfoStr = localStorage.getItem(VChecker.KEY);
                 if (verInfoStr) {
                     verInfo = JSON.parse(verInfoStr);
                 }
@@ -81,4 +83,5 @@ class QVersion {
         });
     }
 }
-QVersion.KEY = "VerKey";
+exports.VChecker = VChecker;
+VChecker.KEY = "VerKey";

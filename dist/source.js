@@ -12,7 +12,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GithubFileSource = void 0;
 const https_1 = __importDefault(require("https"));
 class GithubFileSource {
     constructor(publicFileUrl) {
@@ -31,8 +30,9 @@ class GithubFileSource {
                     return this.readVersionFromFile(res.headers.location);
                 }
                 res.on("data", (d) => {
-                    console.log(d);
-                    resolve(JSON.parse(d)[0]);
+                    var jsonString = Buffer.from(d).toString("utf-8");
+                    console.log("git file content:", jsonString);
+                    resolve(JSON.parse(jsonString)[0]);
                 });
             })
                 .on("error", (e) => {
@@ -47,4 +47,4 @@ class GithubFileSource {
         });
     }
 }
-exports.GithubFileSource = GithubFileSource;
+exports.default = GithubFileSource;

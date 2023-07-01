@@ -1,4 +1,4 @@
-interface VerInfo {
+export interface VerInfo {
   vernum: number; //1
   vercode: String; //1.0.0
   force: boolean; //false
@@ -25,7 +25,7 @@ type ComparatorFunc = (
   newVersionInfo: VerInfo
 ) => Promise<VerInfo | null>;
 
-interface IVersonSource {
+export interface IVersonSource {
   read: () => Promise<VerInfo>;
 }
 
@@ -39,7 +39,7 @@ var CompareByVerNumber: ComparatorFunc = async (
   return null;
 };
 
-class VChecker {
+export class VChecker {
   static KEY = "VerKey";
 
   private _verInfo: VerInfo = zero;
